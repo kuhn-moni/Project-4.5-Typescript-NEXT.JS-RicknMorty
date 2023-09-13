@@ -18,7 +18,7 @@ function MainLayout({ children }: Props) {
       <div>
         <Nav />
         {children}
-        <div>Footer</div>
+        <div>FOOTER</div>
       </div>
     </>
   );

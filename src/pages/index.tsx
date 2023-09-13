@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import CharCard from "../components/CharCard";
-
+import { ApiData, Character } from "@/@types/ApiSchema";
 const inter = Inter({ subsets: ["latin"] });
 
 export const API_URL = "https://rickandmortyapi.com/api/character";

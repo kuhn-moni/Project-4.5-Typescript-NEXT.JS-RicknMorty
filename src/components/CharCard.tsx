@@ -20,9 +20,9 @@ const CharContainer = styled.div`
 const CharCard = ({ character }: CharCardProps) => {
   return (
     <div>
-      <Link href={`/character/${character.id}`} prefetch={false}>
+      <Link href={`/characters/${character.id}`} prefetch={false}>
         <CharContainer>
-          <Image loader={() => character.image} src={character.image} unoptimized width={300} height={300} alt={character.name} />
+          <Image loader={() => character.image} src={character.image} alt={character.name} unoptimized width={300} height={300} />
           <h2>{character.name}</h2>
         </CharContainer>
       </Link>

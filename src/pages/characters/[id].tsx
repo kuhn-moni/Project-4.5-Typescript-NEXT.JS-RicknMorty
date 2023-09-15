@@ -7,15 +7,19 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const API_URL = "https://rickandmortyapi.com/api/character";
 
-export default function CharactersById({ character }) {
+interface CharactersByIdProps {
+  character: Character;
+}
+
+export default function CharactersById({ character }: CharactersByIdProps) {
   return (
     <>
       <Head>
         <title>{character.name}</title>
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <h1>{character.name}</h1>
         <div>
+          <h1>{character.name}</h1>
           <img src={character.image} alt={character.name} />
           <p>Status: {character.status}</p>
           <p>Species: {character.species}</p>
@@ -32,7 +36,7 @@ export default function CharactersById({ character }) {
 export async function getStaticPaths() {
   const response = await fetch(API_URL);
   const data = await response.json();
-  const characters = data.results;
+  const characters: Character[] = data.results;
 
   const paths = characters.map((character) => ({
     params: { id: character.id.toString() },
@@ -44,9 +48,9 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { id: string } }) {
   const response = await fetch(`${API_URL}/${params.id}`);
-  const character = await response.json();
+  const character: Character = await response.json();
 
   return {
     props: {
